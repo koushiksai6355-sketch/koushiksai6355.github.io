@@ -33,7 +33,8 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 30px;
+      align-items: center;
+      gap: 25px;
     }
     nav ul a {
       color: #ccc;
@@ -42,6 +43,18 @@
       transition: color 0.3s;
     }
     nav ul a:hover { color: #00d4ff; }
+    
+    .live-app-link {
+      background: #00d4ff22;
+      color: #00d4ff !important;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid #00d4ff;
+      font-weight: 600;
+    }
+    .live-app-link:hover {
+      background: #00d4ff44;
+    }
 
     /* HERO */
     .hero {
@@ -256,7 +269,8 @@
 
     @media (max-width: 600px) {
       .hero-content h1 { font-size: 2rem; }
-      nav ul { gap: 16px; }
+      nav ul { gap: 12px; }
+      nav ul a { font-size: 0.85rem; }
       section { padding: 60px 20px; }
     }
   </style>
@@ -269,6 +283,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="https://koushik-task-manager.streamlit.app" target="_blank" class="live-app-link">Task Manager 🚀</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -294,94 +309,3 @@
       I love solving problems and creating impactful digital solutions.
     </p>
   </section>
-
-  <section id="skills">
-    <h2 class="section-title">Technical <span>Skills</span></h2>
-    <div class="skills-grid">
-      <div class="skill-tag">Python</div>
-      <div class="skill-tag">FastAPI</div>
-      <div class="skill-tag">MySQL</div>
-      <div class="skill-tag">JavaScript</div>
-      <div class="skill-tag">ReactJS</div>
-      <div class="skill-tag">NodeJS</div>
-      <div class="skill-tag">GoLang</div>
-      <div class="skill-tag">Java</div>
-      <div class="skill-tag">HTML</div>
-      <div class="skill-tag">CSS</div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2 class="section-title">My <span>Projects</span></h2>
-    <div class="projects-grid">
-      
-      <div class="project-card">
-        <h3>🌐 Cloud Task Manager</h3>
-        <p>A distributed task management system with a FastAPI backend and MySQL database. Features JWT authentication and multi-cloud hosting.</p>
-        <div class="project-tags">
-          <span class="project-tag">FastAPI</span>
-          <span class="project-tag">MySQL</span>
-          <span class="project-tag">Streamlit</span>
-          <span class="project-tag">Railway</span>
-        </div>
-        <div class="project-links">
-          <a href="https://koushik-task-manager.streamlit.app" target="_blank" class="link-btn link-primary">Live Demo</a>
-          <a href="https://github.com/koushiksai6355" target="_blank" class="link-btn link-secondary">View Code</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>🗂️ MERN Todo App</h3>
-        <p>A full stack task management application with create, read and delete functionality using MongoDB, Express, React and Node.</p>
-        <div class="project-tags">
-          <span class="project-tag">ReactJS</span>
-          <span class="project-tag">NodeJS</span>
-          <span class="project-tag">MongoDB</span>
-          <span class="project-tag">Express</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/koushiksai6355" target="_blank" class="link-btn link-secondary">View Code</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>🌐 Portfolio Website</h3>
-        <p>Personal portfolio website built with HTML, CSS and JavaScript showcasing skills and projects.</p>
-        <div class="project-tags">
-          <span class="project-tag">HTML</span>
-          <span class="project-tag">CSS</span>
-          <span class="project-tag">JavaScript</span>
-        </div>
-        <div class="project-links">
-          <a href="#" class="link-btn link-primary">Live Demo</a>
-          <a href="https://github.com/koushiksai6355" target="_blank" class="link-btn link-secondary">View Code</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2 class="section-title">Get In <span>Touch</span></h2>
-    <div class="contact-links">
-      <a href="https://github.com/koushiksai6355" target="_blank" class="contact-card">
-        <div class="icon">🐙</div>
-        <p>GitHub</p>
-      </a>
-      <a href="https://linkedin.com/in/koushiksai6355" target="_blank" class="contact-card">
-        <div class="icon">💼</div>
-        <p>LinkedIn</p>
-      </a>
-      <a href="mailto:koushiksai6355@gmail.com" class="contact-card">
-        <div class="icon">📧</div>
-        <p>Email</p>
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2026 Grandhe Sai Koushik. Built with ❤️</p>
-  </footer>
-
-</body>
-</html>
