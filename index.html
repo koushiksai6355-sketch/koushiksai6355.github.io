@@ -3,218 +3,200 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grandhe Sai Koushik | Portfolio</title>
+  <title>Grandhe Sai Koushik | Full Stack Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0a0a0a;
-      color: #f0f0f0;
-      scroll-behavior: smooth;
+    :root {
+      --primary: #00d4ff;
+      --bg: #050505;
+      --card-bg: rgba(20, 20, 20, 0.6);
+      --text: #f0f0f0;
     }
 
-    /* NAV */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% 50%, #00d4ff0a 0%, transparent 50%);
+      z-index: -1;
+    }
+
     nav {
       position: fixed;
       top: 0; width: 100%;
-      background: rgba(10,10,10,0.95);
-      padding: 18px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      border-bottom: 1px solid #222;
-    }
-    nav .logo {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #00d4ff;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-    nav ul a {
-      color: #ccc;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-    }
-    nav ul a:hover { color: #00d4ff; }
-    
-    .live-app-link {
-      background: #00d4ff22;
-      color: #00d4ff !important;
-      padding: 6px 12px;
-      border-radius: 6px;
-      border: 1px solid #00d4ff;
-      font-weight: 600;
+      background: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(15px);
+      padding: 1rem 10%;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 100px 20px 60px;
-      background: radial-gradient(ellipse at top, #0d1f2d 0%, #0a0a0a 70%);
-    }
-    .hero-content h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
-    .hero-content h1 span { color: #00d4ff; }
-    .hero-content p { font-size: 1.2rem; color: #aaa; margin-bottom: 8px; }
-    .cgpa-badge {
-      display: inline-block;
-      background: #00d4ff11;
-      border: 1px solid #00d4ff55;
-      color: #00d4ff;
-      padding: 6px 18px;
-      border-radius: 20px;
+    .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { 
+      text-decoration: none; color: #aaa; font-weight: 500; transition: 0.3s;
       font-size: 0.9rem;
-      margin: 12px 0 24px;
+    }
+    .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 0 20px;
     }
 
-    /* SECTIONS */
-    section { padding: 80px 40px; max-width: 1000px; margin: 0 auto; }
-    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 40px; text-align: center; }
-    .section-title span { color: #00d4ff; }
-
-    /* SKILLS */
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
-    .skill-tag {
-      background: #111;
-      border: 1px solid #00d4ff44;
-      color: #00d4ff;
-      padding: 10px 22px;
-      border-radius: 30px;
-      font-size: 0.95rem;
+    .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; margin-bottom: 1rem; }
+    .hero h1 span { color: var(--primary); }
+    
+    .typewriter {
+      font-size: 1.2rem; color: #888; margin-bottom: 2rem;
+      border-right: 2px solid var(--primary);
+      white-space: nowrap; overflow: hidden;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
     }
 
-    /* PROJECTS */
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary); } }
+
+    /* Cards */
+    section { padding: 100px 10%; }
+    .section-title { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; }
+
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
     }
+
     .project-card {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 12px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(5px);
     }
-    .project-card h3 { color: #00d4ff; margin-bottom: 10px; }
-    .project-card p { color: #999; font-size: 0.9rem; margin-bottom: 16px; flex-grow: 1; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-    .project-tag { background: #00d4ff11; color: #00d4ff; padding: 3px 10px; border-radius: 12px; font-size: 0.78rem; }
-    .project-links { display: flex; gap: 10px; }
-    .link-btn { text-decoration: none; font-size: 0.8rem; padding: 6px 12px; border-radius: 5px; transition: 0.3s; }
-    .link-primary { background: #00d4ff; color: #000; font-weight: 600; }
-    .link-secondary { border: 1px solid #444; color: #aaa; }
 
-    /* CONTACT */
-    .contact-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-    .contact-card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 20px 32px; text-align: center; text-decoration: none; color: #ccc; min-width: 160px; }
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+    }
 
-    footer { text-align: center; padding: 30px; color: #444; font-size: 0.85rem; border-top: 1px solid #1a1a1a; }
+    .project-tag {
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--primary);
+      padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+      margin-right: 5px;
+    }
+
+    .btn-live {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 10px 20px;
+      background: var(--primary);
+      color: #000;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: 0.3s;
+    }
+
+    .btn-live:hover { background: #fff; transform: translateY(-2px); }
+
+    /* Footer / Contact */
+    .contact-container {
+      display: flex; justify-content: center; gap: 3rem; margin-top: 2rem;
+    }
+    .contact-item { font-size: 2rem; color: #555; transition: 0.3s; }
+    .contact-item:hover { color: var(--primary); transform: scale(1.2); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      section { padding: 60px 5%; }
+    }
   </style>
 </head>
 <body>
 
   <nav>
-    <div class="logo">GSK</div>
-    <ul>
+    <div class="logo">GSK.DEV</div>
+    <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="https://koushik-task-manager.streamlit.app" target="_blank" class="live-app-link">Task Manager 🚀</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <div class="hero">
-    <div class="hero-content">
-      <h1>Grandhe <span>Sai Koushik</span></h1>
-      <p>ECE Student & Aspiring Full Stack Developer</p>
-      <div class="cgpa-badge">⭐ CGPA: 8.9 / 10</div>
+    <div class="cgpa-badge" style="background: rgba(0, 212, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); padding: 5px 15px; border-radius: 20px; margin-bottom: 1rem;">
+      ⭐ 8.9 CGPA
+    </div>
+    <h1>Hi, I'm <span>Sai Koushik</span></h1>
+    <div class="typewriter">ECE Student | Aspiring Full Stack Developer</div>
+    <div style="display:flex; gap: 15px;">
+      <a href="#projects" class="btn-live">Explore My Work</a>
+      <a href="mailto:koushiksai6355@gmail.com" class="btn-live" style="background:transparent; border: 1px solid var(--primary); color: var(--primary);">Get In Touch</a>
     </div>
   </div>
 
-  <section id="skills">
-    <h2 class="section-title">Technical <span>Skills</span></h2>
-    <div class="skills-grid">
-      <div class="skill-tag">Python</div>
-      <div class="skill-tag">FastAPI</div>
-      <div class="skill-tag">MySQL</div>
-      <div class="skill-tag">JavaScript</div>
-      <div class="skill-tag">ReactJS</div>
-      <div class="skill-tag">NodeJS</div>
-      <div class="skill-tag">GoLang</div>
-    </div>
-  </section>
-
   <section id="projects">
-    <h2 class="section-title">My <span>Projects</span></h2>
+    <h2 class="section-title">Featured <span>Projects</span></h2>
     <div class="projects-grid">
       
       <div class="project-card">
-        <h3>🌐 Cloud Task Manager</h3>
-        <p>A distributed task management system with a FastAPI backend and a MySQL database. Hosted on Railway and Streamlit Cloud.</p>
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
+        <h3>Cloud Task Manager</h3>
+        <p style="color: #888; margin: 1rem 0;">A distributed system using FastAPI and MySQL. Handles secure auth and real-time task tracking.</p>
         <div class="project-tags">
           <span class="project-tag">FastAPI</span>
           <span class="project-tag">MySQL</span>
           <span class="project-tag">Railway</span>
         </div>
-        <div class="project-links">
-          <a href="https://koushik-task-manager.streamlit.app" target="_blank" class="link-btn link-primary">Live Demo</a>
-          <a href="https://github.com/koushiksai6355-sketch/Task-Manager" target="_blank" class="link-btn link-secondary">View Code</a>
-        </div>
+        <a href="https://koushik-task-manager.streamlit.app" target="_blank" class="btn-live">Launch App <i class="fas fa-external-link-alt"></i></a>
       </div>
 
       <div class="project-card">
-        <h3>🗂️ MERN Todo App</h3>
-        <p>A full stack task management application using MongoDB, Express, React and Node.</p>
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🗂️</div>
+        <h3>MERN Stack Todo</h3>
+        <p style="color: #888; margin: 1rem 0;">Full-stack CRUD application with MongoDB integration and responsive React frontend.</p>
         <div class="project-tags">
-          <span class="project-tag">ReactJS</span>
+          <span class="project-tag">React</span>
           <span class="project-tag">NodeJS</span>
           <span class="project-tag">MongoDB</span>
         </div>
-        <div class="project-links">
-          <a href="https://github.com/koushiksai6355-sketch/MERN-Stack-Todo-App" target="_blank" class="link-btn link-secondary">View Code</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>🌐 Portfolio Website</h3>
-        <p>This personal portfolio website showcasing skills and projects.</p>
-        <div class="project-tags">
-          <span class="project-tag">HTML</span>
-          <span class="project-tag">CSS</span>
-          <span class="project-tag">JS</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/koushiksai6355-sketch/koushiksai6355.github.io" target="_blank" class="link-btn link-secondary">View Code</a>
-        </div>
+        <a href="https://github.com/koushiksai6355-sketch/MERN-Stack-Todo-App" target="_blank" class="btn-live" style="background:#333; color:white;">View Code</a>
       </div>
 
     </div>
   </section>
 
-  <section id="contact">
-    <h2 class="section-title">Get In <span>Touch</span></h2>
-    <div class="contact-links">
-      <a href="https://github.com/koushiksai6355-sketch" target="_blank" class="contact-card">GitHub</a>
-      <a href="https://linkedin.com/in/koushiksai6355" target="_blank" class="contact-card">LinkedIn</a>
-      <a href="mailto:koushiksai6355@gmail.com" class="contact-card">Email</a>
+  <section id="contact" style="text-align: center;">
+    <h2 class="section-title">Let's <span>Connect</span></h2>
+    <div class="contact-container">
+      <a href="https://github.com/koushiksai6355-sketch" class="contact-item"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/koushiksai6355" class="contact-item"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:koushiksai6355@gmail.com" class="contact-item"><i class="fas fa-envelope"></i></a>
     </div>
   </section>
 
-  <footer>
-    <p>© 2026 Grandhe Sai Koushik. Built with ❤️</p>
+  <footer style="padding: 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: #444;">
+    Built with ❤️ by Grandhe Sai Koushik | © 2026
   </footer>
 
 </body>
