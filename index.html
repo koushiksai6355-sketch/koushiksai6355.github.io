@@ -10,6 +10,7 @@
       font-family: 'Segoe UI', sans-serif;
       background: #0a0a0a;
       color: #f0f0f0;
+      scroll-behavior: smooth;
     }
 
     /* NAV */
@@ -160,6 +161,8 @@
       border-radius: 12px;
       padding: 28px;
       transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
     }
     .project-card:hover {
       border-color: #00d4ff44;
@@ -176,11 +179,13 @@
       font-size: 0.9rem;
       line-height: 1.6;
       margin-bottom: 16px;
+      flex-grow: 1;
     }
     .project-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-bottom: 20px;
     }
     .project-tag {
       background: #00d4ff11;
@@ -188,6 +193,30 @@
       padding: 3px 10px;
       border-radius: 12px;
       font-size: 0.78rem;
+    }
+    .project-links {
+      display: flex;
+      gap: 10px;
+    }
+    .link-btn {
+      text-decoration: none;
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .link-primary {
+      background: #00d4ff;
+      color: #000;
+      font-weight: 600;
+    }
+    .link-secondary {
+      border: 1px solid #444;
+      color: #aaa;
+    }
+    .link-secondary:hover {
+      border-color: #00d4ff;
+      color: #00d4ff;
     }
 
     /* CONTACT */
@@ -234,7 +263,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <div class="logo">GSK</div>
     <ul>
@@ -245,7 +273,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-content">
       <h1>Grandhe <span>Sai Koushik</span></h1>
@@ -259,21 +286,21 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
   <section id="about">
     <h2 class="section-title">About <span>Me</span></h2>
     <p class="about-text">
       I'm an Electronics and Communication Engineering student at Mohan Babu University with a strong passion for software development. 
-      I enjoy building full stack web applications and am currently expanding my skills in modern technologies like ReactJS, NodeJS, and GoLang. 
+      I enjoy building full stack web applications and am currently expanding my skills in modern technologies like FastAPI, MySQL, ReactJS, and NodeJS. 
       I love solving problems and creating impactful digital solutions.
     </p>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills">
     <h2 class="section-title">Technical <span>Skills</span></h2>
     <div class="skills-grid">
       <div class="skill-tag">Python</div>
+      <div class="skill-tag">FastAPI</div>
+      <div class="skill-tag">MySQL</div>
       <div class="skill-tag">JavaScript</div>
       <div class="skill-tag">ReactJS</div>
       <div class="skill-tag">NodeJS</div>
@@ -284,10 +311,25 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
     <h2 class="section-title">My <span>Projects</span></h2>
     <div class="projects-grid">
+      
+      <div class="project-card">
+        <h3>🌐 Cloud Task Manager</h3>
+        <p>A distributed task management system with a FastAPI backend and MySQL database. Features JWT authentication and multi-cloud hosting.</p>
+        <div class="project-tags">
+          <span class="project-tag">FastAPI</span>
+          <span class="project-tag">MySQL</span>
+          <span class="project-tag">Streamlit</span>
+          <span class="project-tag">Railway</span>
+        </div>
+        <div class="project-links">
+          <a href="https://koushik-task-manager.streamlit.app" target="_blank" class="link-btn link-primary">Live Demo</a>
+          <a href="https://github.com/koushiksai6355" target="_blank" class="link-btn link-secondary">View Code</a>
+        </div>
+      </div>
+
       <div class="project-card">
         <h3>🗂️ MERN Todo App</h3>
         <p>A full stack task management application with create, read and delete functionality using MongoDB, Express, React and Node.</p>
@@ -297,7 +339,11 @@
           <span class="project-tag">MongoDB</span>
           <span class="project-tag">Express</span>
         </div>
+        <div class="project-links">
+          <a href="https://github.com/koushiksai6355" target="_blank" class="link-btn link-secondary">View Code</a>
+        </div>
       </div>
+
       <div class="project-card">
         <h3>🌐 Portfolio Website</h3>
         <p>Personal portfolio website built with HTML, CSS and JavaScript showcasing skills and projects.</p>
@@ -306,11 +352,15 @@
           <span class="project-tag">CSS</span>
           <span class="project-tag">JavaScript</span>
         </div>
+        <div class="project-links">
+          <a href="#" class="link-btn link-primary">Live Demo</a>
+          <a href="https://github.com/koushiksai6355" target="_blank" class="link-btn link-secondary">View Code</a>
+        </div>
       </div>
+
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <h2 class="section-title">Get In <span>Touch</span></h2>
     <div class="contact-links">
